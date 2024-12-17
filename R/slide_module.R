@@ -348,18 +348,48 @@ slideModuleUI <- function(id) {
           status = "warning",
           solidHeader = TRUE,
           collapsible = FALSE,
-          height = "500px",
+          height = "600px", # Augmenté pour plus d'espace
           div(
             class = "card-content",
             h2(class = "presentation-title", "Structure d'une Application Shiny"),
-            tags$ul(
-              class = "context-list",
-              tags$li(" UI : Interface utilisateur (inputs et outputs)"),
-              tags$li(" Server : Logique métier (calculs réactifs)"),
-              tags$li(" App : Combine UI + Server.")
+            div(
+              style = "display: flex; justify-content: space-around; align-items: center; padding: 20px;",
+              # UI Section
+              div(
+                style = "text-align: center;",
+                img(src = "cosmetics.png", height = "100px", alt = "UI Image"),
+                h4("UI : Interface utilisateur"),
+                p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
+              ),
+              # Server Section
+              div(
+                style = "text-align: center;",
+                img(src = "brain.png", height = "100px", alt = "Server Image"),
+                h4("Server : Logique métier"),
+                p("Les calculs réactifs et traitements définissent la logique de l'application.")
+              )
+            ),
+            # Accolade for App
+            div(
+              style = "text-align: center; margin-top: 20px; position: relative;",
+              div(
+                style = "
+          display: inline-block; 
+          border-left: 3px solid #000; 
+          border-bottom: 3px solid #000; 
+          border-right: 3px solid #000; 
+          height: 50px; 
+          width: 200px; 
+          border-radius: 0 0 100px 100px; 
+          margin-bottom: -10px;",
+          NULL
+              ),
+          h4("App : Combine UI + Server"),
+          p("Une application complète et dynamique résultant de la fusion des deux composants.")
             )
           )
         )
+        
       ),
       
       
