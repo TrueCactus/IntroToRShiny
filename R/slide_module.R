@@ -394,7 +394,6 @@ slideModuleUI <- function(id) {
       
       
       
-      # Slide 7
       div(
         id = ns("slide7"),
         style = "display: none;",
@@ -407,18 +406,35 @@ slideModuleUI <- function(id) {
           height = "500px",
           div(
             class = "card-content",
-            h2(class = "presentation-title", "Exemple d'Utilisation"),
+            h2(
+              class = "presentation-title",
+              style = "text-align: left; font-size: 1.5rem;",
+              "Exemple d'utilisation"
+            ),
             div(
               style = "display: flex; justify-content: space-around; align-items: center; margin-top: 40px;",
+              
+              # Partie "Avant"
               div(
-                style = "text-align: center;",
+                style = "text-align: center; font-size: 1.6rem;",
                 h4("Avant"),
                 tags$p("Un tableur Excel"),
                 tags$p("avec des données fixes"),
                 icon("table", "fa-4x", style = "color: #6c757d; margin-top: 20px;")
               ),
+              
+              # Image Team Rocket
               div(
-                style = "text-align: center;",
+                class = "card-content",
+                div(
+                  style = "text-align: center;",
+                  img(src = "Teamrocketpokemon.png", alt = "Team Rocket", style = "max-width: 350px;")
+                )
+              ),
+              
+              # Partie "Après"
+              div(
+                style = "text-align: center; font-size: 1.6rem;",
                 h4("Après"),
                 tags$p("Une interface web interactive"),
                 tags$p("permettant de filtrer et visualiser les données en direct"),
@@ -428,6 +444,7 @@ slideModuleUI <- function(id) {
           )
         )
       ),
+
       
       # Slide 8
       div(
@@ -468,8 +485,8 @@ slideModuleUI <- function(id) {
             style = "text-align: center; padding-top: 50px;",
             h1(class = "presentation-title", "Merci !"),
             img(
-              src = "www/your_photo.jpg", # Remplacez par le chemin de votre photo
-              style = "width: 150px; height: 150px; border-radius: 50%; margin-top: 20px;"
+              src = "rcestchouette.jpg", # Remplacez par le chemin de votre photo
+              style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
             ),
             div(
               style = "margin-top: 30px;",
@@ -477,20 +494,20 @@ slideModuleUI <- function(id) {
               div(
                 style = "margin-top: 20px; display: flex; justify-content: center; gap: 20px;",
                 tags$a(
-                  href = "https://www.linkedin.com/in/votre-profil",
+                  href = "https://www.linkedin.com/in/luciecamanez/",
                   target = "_blank",
                   icon("linkedin", "fa-2x", style = "color: #0077b5;")
                 ),
                 tags$a(
-                  href = "https://bsky.app/profile/votre-profile",
+                  href = "https://web-cdn.bsky.app/profile/ladatatata.bsky.social",
                   target = "_blank",
                   img(
-                    src = "BS_logo.png", # Ajoutez l'icône papillon dans le dossier www
+                    src = "bs_logo.png", # Ajoutez l'icône papillon dans le dossier www
                     style = "width: 32px; height: 32px; margin-top: -4px;"
                   )
                 ),
                 tags$a(
-                  href = "https://github.com/votre-repo",
+                  href = "https://github.com/TrueCactus",
                   target = "_blank",
                   icon("github", "fa-2x", style = "color: black;")
                 )
@@ -565,10 +582,11 @@ slideModule <- function(id) {
         title = "R Shiny c'est super chouette !",
         div(
           style = "text-align: center;",
-          img(src = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/shiny.png",
-              height = "200px",
-              style = "margin: 20px;"),
-          h3("Découvrez la puissance de Shiny !",
+          img(
+            src = "rcestchouette.jpg", # Remplacez par le chemin de votre photo
+            style = "width: 250px; height:250px; border-radius: 50%; margin-top: 20px;"
+          ),
+          h3("R Shiny c'est sup'R chouette !",
              style = "color: #2c3e50; margin-top: 20px;")
         ),
         footer = modalButton("Fermer"),
