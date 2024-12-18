@@ -1,5 +1,5 @@
 
-# Chargement des packages nécessaires -------------------------------------
+# Chargement des packages nécessaires, script et data -------------------------------------
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
@@ -9,7 +9,7 @@ library(shinyjs)
 library(fmsb)
 library(scales)
 
-# Source le module
+# Source le module des slides
 source("R/slide_module.R")
 
 #read csv
