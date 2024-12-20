@@ -210,7 +210,6 @@ server <- function(input, output, session) {
       showNotification("Veuillez sélectionner deux Pokémon pour la comparaison.", type = "warning")
     }
   }, height = 700, width = 700)  # Ajuster la taille du plot
-  
 }
 
 

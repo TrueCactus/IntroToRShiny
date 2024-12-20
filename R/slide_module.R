@@ -8,126 +8,175 @@ slideModuleUI <- function(id) {
   
   tagList(
     useShinyjs(),
+    
     tags$head(
       tags$style(HTML("
-                      
+      .slide-card {
+        height: calc(100vh - 200px) !important;
+        min-height: 500px;
+        margin-bottom: 20px;
+      }
+
+      .card-content {
+        height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .presentation-title {
+        font-size: 4.5rem !important;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .presentation-subtitle {
+        font-size: 3.8rem !important;
+      }
+
+      .context-list li {
+        font-size: 2.5rem !important;
+      }
+
+      .navigation-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
+        margin-top: 20px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .nav-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 16px;
+        background-color: #ffc107;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .slide-counter {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 10px 25px;
+        background: #fff;
+        border-radius: 25px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
         .presentation-title {
-  font-size: 4.5rem !important; /* Augmente la taille des titres */
-  font-weight: bold;
-}
-
-.presentation-subtitle {
-  font-size: 3.8rem !important; /* Augmente la taille des sous-titres */
-}
-
-.context-list li {
-  font-size: 2.5rem !important; /* Agrandit le texte des listes */
-}
-
-.card-content {
-  font-size: 2rem; /* Taille générale du texte */
-}              
-                      
-                      
-        .nav-button {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          font-size: 16px;
-          background-color: #ffc107;
-          border: none;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-        }
-        
-        .nav-button:hover {
-          background-color: #ffca2c;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .nav-button i {
-          color: #fff;
-        }
-        
-        .slide-counter {
-          font-size: 18px;
-          font-weight: 600;
-          padding: 10px 25px;
-          background: #fff;
-          border-radius: 25px;
-          text-align: center;
-          margin: 10px 0;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-          color: #666;
-        }
-        
-        .navigation-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 30px;
-          padding: 20px;
-          margin-top: 20px;
-          background: #f8f9fa;
-          border-radius: 15px;
-          width: fit-content;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        
-        .presentation-title {
-          color: #2c3e50;
-          margin-bottom: 30px;
-          font-weight: 600;
+          font-size: 2.5rem !important;
         }
         
         .presentation-subtitle {
-          color: #34495e;
-          font-size: 1.5rem;
-          margin-bottom: 20px;
-        }
-        
-        .card-content {
-          padding: 30px;
-        }
-        
-        .context-list {
-          font-size: 1.2rem;
-          line-height: 1.8;
-          color: #555;
-          margin-top: 20px;
-          list-style-type: none;
-          padding-left: 0;
+          font-size: 2rem !important;
         }
         
         .context-list li {
-          margin-bottom: 15px;
-          padding-left: 25px;
-          position: relative;
+          font-size: 1.5rem !important;
         }
         
-        .context-list li:before {
-          content: '→';
-          position: absolute;
-          left: 0;
-          color: #ffc107;
+        .image-flex-container img {
+          max-width: 100%;
+          height: auto;
         }
-
-        .card-content .column {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 100%; /* Utilisation complète de la hauteur disponible */
-          box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
-          overflow-y: auto; /* Permet un défilement si le contenu dépasse */
-  }
-      "))
+      }
+    "))
     ),
+    
+    #' tags$head(
+    #'   tags$style(HTML("
+    #'   .slide-card {
+    #'     height: calc(100vh - 200px) !important;
+    #'     min-height: 500px;
+    #'     margin-bottom: 20px;
+    #'   }
+    #' 
+    #'   .card-content {
+    #'     height: 100%;
+    #'     overflow-y: auto;
+    #'     padding: 20px;
+    #'   }
+    #' 
+    #'   .presentation-title {
+    #'     font-size: 4.5rem !important;
+    #'     font-weight: bold;
+    #'     color: #2c3e50;
+    #'   }
+    #' 
+    #'   .presentation-subtitle {
+    #'     font-size: 3.8rem !important;
+    #'   }
+    #' 
+    #'   .context-list li {
+    #'     font-size: 2.5rem !important;
+    #'   }
+    #' 
+    #'   .navigation-container {
+    #'     display: flex;
+    #'     justify-content: center;
+    #'     align-items: center;
+    #'     gap: 30px;
+    #'     padding: 20px;
+    #'     margin-top: 20px;
+    #'     background: #f8f9fa;
+    #'     border-radius: 15px;
+    #'     width: fit-content;
+    #'     margin-left: auto;
+    #'     margin-right: auto;
+    #'   }
+    #' 
+    #'   .nav-button {
+    #'     width: 50px;
+    #'     height: 50px;
+    #'     border-radius: 50%;
+    #'     font-size: 16px;
+    #'     background-color: #ffc107;
+    #'     border: none;
+    #'     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    #'     display: flex;
+    #'     align-items: center;
+    #'     justify-content: center;
+    #'     padding: 0;
+    #'   }
+    #' 
+    #'   .slide-counter {
+    #'     font-size: 18px;
+    #'     font-weight: 600;
+    #'     padding: 10px 25px;
+    #'     background: #fff;
+    #'     border-radius: 25px;
+    #'     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    #'     color: #666;
+    #'   }
+    #' 
+    #'   @media (max-width: 768px) {
+    #'     .presentation-title {
+    #'       font-size: 2.5rem !important;
+    #'     }
+    #'     
+    #'     .presentation-subtitle {
+    #'       font-size: 2rem !important;
+    #'     }
+    #'     
+    #'     .context-list li {
+    #'       font-size: 1.5rem !important;
+    #'     }
+    #'   }
+    #' "))
+    #' ),
     
     # Container pour les slides
     box( width = 12,
@@ -152,7 +201,7 @@ slideModuleUI <- function(id) {
             div(
               style = "margin-top: 40px;",
               img(src = "Shiny_hex_logo.png", 
-                  height = "200px")
+                  style = "max-height: 200px; width: auto; max-width: 100%;")
             )
           )
         )
@@ -179,13 +228,14 @@ slideModuleUI <- function(id) {
               tags$li(" Objectif : Créer une application interactive et professionnelle")
             ),
             div(
+              class = "flex-image-container",
               style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
               img(src = "table.png", 
-                  height = "150px"),
+                  style = "max-height: 200px; width: auto; max-width: 100%;"),
               img(src = "right-arrow.png", 
-                  height = "80px"),  # Réduction de la flèche
+                  style = "max-height: 200px; width: auto; max-width: 100%;"),
               img(src = "dashboard.png", 
-                  height = "150px")
+                  style = "max-height: 200px; width: auto; max-width: 100%;")
             )
           )
         )
@@ -214,11 +264,11 @@ slideModuleUI <- function(id) {
             div(
               style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
               img(src = "interactive.png", 
-                  height = "150px"),
+                  style = "max-height: 150px; width: auto; max-width: 100%;"),
               img(src = "internet.png", 
-                  height = "150px"),  # Réduction de la flèche
+                  style = "max-height: 150px; width: auto; max-width: 100%;"),
               img(src = "no-code.png", 
-                  height = "150px")
+                  style = "max-height: 150px; width: auto; max-width: 100%;")
             )
           )
         )
@@ -240,6 +290,7 @@ slideModuleUI <- function(id) {
             h2(class = "presentation-title", "Démonstration Interactive"),
             fluidRow(
               column(
+                class = "responsive-column",
                 width = 6,
                 div(
                   style = "padding: 20px;",
@@ -259,6 +310,7 @@ slideModuleUI <- function(id) {
                 )
               ),
               column(
+                class = "responsive-column",
                 width = 6,
                 div(
                   style = "padding: 20px; text-align: center;",
@@ -292,8 +344,9 @@ slideModuleUI <- function(id) {
               style = "margin: 0;",
               # Première colonne
               column(
+                class = "responsive-column",
                 width = 3,
-                class = "column",  #
+                #class = "column",  #
                 div(
                   style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
                   h4("Entrées Basiques", style = "color: #666; font-size: 1rem;"),
@@ -306,7 +359,8 @@ slideModuleUI <- function(id) {
               # Deuxième colonne
               column(
                 width = 3,
-                class = "column", 
+                class = "responsive-column",
+                #class = "column", 
                 div(
                   style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
                   h4("Sélections", style = "color: #666; font-size: 1rem;"),
@@ -325,7 +379,8 @@ slideModuleUI <- function(id) {
               # Troisième colonne
               column(
                 width = 3,
-                class = "column",  #
+                class = "responsive-column",
+                #class = "column",  #
                 div(
                   style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
                   h4("Contrôles Avancés", style = "color: #666; font-size: 1rem;"),
@@ -343,7 +398,8 @@ slideModuleUI <- function(id) {
               # Quatrième colonne
               column(
                 width = 3,
-                class = "column",  #
+                class = "responsive-column",
+                #class = "column",  #
                 div(
                   style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
                   h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
@@ -375,14 +431,14 @@ slideModuleUI <- function(id) {
               # UI Section
               div(
                 style = "text-align: center;",
-                img(src = "cosmetics.png", height = "100px", alt = "UI Image"),
+                img(src = "cosmetics.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "UI Image"),
                 h4("UI : Interface utilisateur"),
                 p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
               ),
               # Server Section
               div(
                 style = "text-align: center;",
-                img(src = "brain.png", height = "100px", alt = "Server Image"),
+                img(src = "brain.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "Server Image"),
                 h4("Server : Logique métier"),
                 p("Les calculs réactifs et traitements définissent la logique de l'application.")
               )
@@ -435,10 +491,10 @@ slideModuleUI <- function(id) {
               # Partie "Avant"
               div(
                 style = "text-align: center; font-size: 1.6rem;",
-                h4("Avant"),
+                h2("Avant"),
                 tags$p("Un tableur Excel"),
                 tags$p("avec des données fixes"),
-                img(src = "table.png", alt = "table", style = "max-width: 150px;")
+                img(src = "table.png", alt = "table", style = "max-height: 150px; width: auto; max-width: 100%;")
               ),
               
               # Image Team Rocket
@@ -446,17 +502,17 @@ slideModuleUI <- function(id) {
                 class = "card-content",
                 div(
                   style = "text-align: center;",
-                  img(src = "Teamrocketpokemon.png", alt = "Team Rocket", style = "max-width: 350px;")
+                  img(src = "Teamrocketpokemon.png", alt = "Team Rocket", style = "max-height: 250px; width: auto; max-width: 100%;")
                 )
               ),
               
               # Partie "Après"
               div(
                 style = "text-align: center; font-size: 1.6rem;",
-                h4("Après"),
+                h2("Après"),
                 tags$p("Une interface web interactive"),
                 tags$p("permettant de filtrer et visualiser les données en direct"),
-                img(src = "dashboard.png", alt = "dashboard", style = "max-width: 150px;")
+                img(src = "dashboard.png", alt = "dashboard", style = "max-height: 150px; width: auto; max-width: 100%;")
               )
             )
           )
