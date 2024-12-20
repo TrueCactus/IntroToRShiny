@@ -151,7 +151,7 @@ slideModuleUI <- function(id) {
             h2(class = "presentation-subtitle", "d'un Tableur à une Application Web Dynamique"),
             div(
               style = "margin-top: 40px;",
-              img(src = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/shiny.png", 
+              img(src = "Shiny_hex_logo.png", 
                   height = "200px")
             )
           )
@@ -177,6 +177,15 @@ slideModuleUI <- function(id) {
               tags$li(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive"),
               tags$li(" Besoin d'une solution moderne pour explorer et visualiser les données"),
               tags$li(" Objectif : Créer une application interactive et professionnelle")
+            ),
+            div(
+              style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
+              img(src = "table.png", 
+                  height = "150px"),
+              img(src = "right-arrow.png", 
+                  height = "80px"),  # Réduction de la flèche
+              img(src = "dashboard.png", 
+                  height = "150px")
             )
           )
         )
@@ -201,6 +210,15 @@ slideModuleUI <- function(id) {
               tags$li(" Interactivité immédiate pour vos analyses"),
               tags$li(" Accessibilité via un navigateur web : partage facile avec les collaborateurs"),
               tags$li(" Pas besoin de compétences avancées en développement web")
+            ),
+            div(
+              style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
+              img(src = "interactive.png", 
+                  height = "150px"),
+              img(src = "internet.png", 
+                  height = "150px"),  # Réduction de la flèche
+              img(src = "no-code.png", 
+                  height = "150px")
             )
           )
         )
@@ -420,7 +438,7 @@ slideModuleUI <- function(id) {
                 h4("Avant"),
                 tags$p("Un tableur Excel"),
                 tags$p("avec des données fixes"),
-                icon("table", "fa-4x", style = "color: #6c757d; margin-top: 20px;")
+                img(src = "table.png", alt = "table", style = "max-width: 150px;")
               ),
               
               # Image Team Rocket
@@ -438,7 +456,7 @@ slideModuleUI <- function(id) {
                 h4("Après"),
                 tags$p("Une interface web interactive"),
                 tags$p("permettant de filtrer et visualiser les données en direct"),
-                icon("desktop", "fa-4x", style = "color: #28a745; margin-top: 20px;")
+                img(src = "dashboard.png", alt = "dashboard", style = "max-width: 150px;")
               )
             )
           )
