@@ -502,7 +502,7 @@ slideModuleUI <- function(id) {
                 class = "card-content",
                 div(
                   style = "text-align: center;",
-                  img(src = "Teamrocketpokemon.png", alt = "Team Rocket", style = "max-height: 250px; width: auto; max-width: 100%;")
+                  img(src = "teamrocketpokemon.png", alt = "Team Rocket", style = "max-height: 250px; width: auto; max-width: 100%;")
                 )
               ),
               
@@ -558,9 +558,15 @@ slideModuleUI <- function(id) {
             class = "card-content",
             style = "text-align: center; padding-top: 50px;",
             h1(class = "presentation-title", "Merci !"),
+            div(
             img(
-              src = "rcestchouette.jpg", # Remplacez par le chemin de votre photo
+              src = "Rcestchouette.jpg", # Remplacez par le chemin de votre photo
               style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
+            ),
+            img(
+              src = "QRCODE.png", # Remplacez par le chemin de votre photo
+              style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
+            )
             ),
             div(
               style = "margin-top: 30px;",
@@ -657,7 +663,7 @@ slideModule <- function(id) {
         div(
           style = "text-align: center;",
           img(
-            src = "rcestchouette.jpg", # Remplacez par le chemin de votre photo
+            src = "Rcestchouette.jpg", # Remplacez par le chemin de votre photo
             style = "width: 250px; height:250px; border-radius: 50%; margin-top: 20px;"
           ),
           h3("R Shiny c'est sup'R chouette !",
