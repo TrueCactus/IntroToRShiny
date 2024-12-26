@@ -11,176 +11,175 @@ slideModuleUI <- function(id) {
     
     tags$head(
       tags$style(HTML("
-      .slide-card {
-        height: calc(100vh - 200px) !important;
-        min-height: 500px;
-        margin-bottom: 20px;
-      }
+                      /* Styles de base pour la box et les conteneurs */
+.box {
+  overflow: hidden;
+  position: relative;
+}
 
-      .card-content {
-        height: 100%;
-        overflow-y: auto;
-        padding: 20px;
-      }
+#slides_container {
+  height: 100%;
+  overflow: hidden;
+}
 
-      .presentation-title {
-        font-size: 4.5rem !important;
-        font-weight: bold;
-        color: #2c3e50;
-      }
+/* Styles des cartes */
+.slide-card {
+  height: calc(100vh - 200px) !important;
+  min-height: 500px;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+}
 
-      .presentation-subtitle {
-        font-size: 3.8rem !important;
-      }
+.bs4Card {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-      .context-list li {
-        font-size: 2.5rem !important;
-      }
+.bs4Card .card-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
 
-      .navigation-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        padding: 20px;
-        margin-top: 20px;
-        background: #f8f9fa;
-        border-radius: 15px;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-      }
+.card-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
-      .nav-button {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 16px;
-        background-color: #ffc107;
-        border: none;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-      }
+/* Styles de typographie */
+.presentation-title {
+  font-size: 4.5rem !important;
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-      .slide-counter {
-        font-size: 18px;
-        font-weight: 600;
-        padding: 10px 25px;
-        background: #fff;
-        border-radius: 25px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        color: #666;
-      }
+.presentation-subtitle {
+  font-size: 3.8rem !important;
+}
 
-      @media (max-width: 768px) {
-        .presentation-title {
-          font-size: 2.5rem !important;
-        }
-        
-        .presentation-subtitle {
-          font-size: 2rem !important;
-        }
-        
-        .context-list li {
-          font-size: 1.5rem !important;
-        }
-        
-        .image-flex-container img {
-          max-width: 100%;
-          height: auto;
-        }
-      }
+.context-list li {
+  font-size: 2.5rem !important;
+}
+
+/* Styles de navigation */
+.navigation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  width: fit-content;
+  margin: 20px auto 0;
+  position: sticky;
+  bottom: 20px;
+  z-index: 1000;
+}
+
+.nav-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 16px;
+  background-color: #ffc107;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.slide-counter {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 25px;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: #666;
+}
+
+/* Styles responsifs */
+@media (max-width: 768px) {
+  .slide-card {
+    height: auto !important;
+    min-height: 400px;
+    max-height: calc(100vh - 150px);
+  }
+
+  .bs4Card {
+    height: 100%;
+    max-height: calc(100vh - 150px);
+  }
+
+  .card-content {
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 10px;
+  }
+
+  .bs4Card .card-body {
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  /* Conteneurs flex en responsive */
+  div[style*='display: flex'] {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Typographie responsive */
+  .presentation-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .presentation-subtitle {
+    font-size: 2rem !important;
+  }
+  
+  .context-list li {
+    font-size: 1.5rem !important;
+  }
+
+  /* Images responsives */
+  img {
+    max-height: 75px !important;
+    width: auto;
+    margin: 10px auto;
+  }
+
+  .image-flex-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ajustements pour les colonnes responsive */
+  .responsive-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+}
     "))
     ),
-    
-    #' tags$head(
-    #'   tags$style(HTML("
-    #'   .slide-card {
-    #'     height: calc(100vh - 200px) !important;
-    #'     min-height: 500px;
-    #'     margin-bottom: 20px;
-    #'   }
-    #' 
-    #'   .card-content {
-    #'     height: 100%;
-    #'     overflow-y: auto;
-    #'     padding: 20px;
-    #'   }
-    #' 
-    #'   .presentation-title {
-    #'     font-size: 4.5rem !important;
-    #'     font-weight: bold;
-    #'     color: #2c3e50;
-    #'   }
-    #' 
-    #'   .presentation-subtitle {
-    #'     font-size: 3.8rem !important;
-    #'   }
-    #' 
-    #'   .context-list li {
-    #'     font-size: 2.5rem !important;
-    #'   }
-    #' 
-    #'   .navigation-container {
-    #'     display: flex;
-    #'     justify-content: center;
-    #'     align-items: center;
-    #'     gap: 30px;
-    #'     padding: 20px;
-    #'     margin-top: 20px;
-    #'     background: #f8f9fa;
-    #'     border-radius: 15px;
-    #'     width: fit-content;
-    #'     margin-left: auto;
-    #'     margin-right: auto;
-    #'   }
-    #' 
-    #'   .nav-button {
-    #'     width: 50px;
-    #'     height: 50px;
-    #'     border-radius: 50%;
-    #'     font-size: 16px;
-    #'     background-color: #ffc107;
-    #'     border: none;
-    #'     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    #'     display: flex;
-    #'     align-items: center;
-    #'     justify-content: center;
-    #'     padding: 0;
-    #'   }
-    #' 
-    #'   .slide-counter {
-    #'     font-size: 18px;
-    #'     font-weight: 600;
-    #'     padding: 10px 25px;
-    #'     background: #fff;
-    #'     border-radius: 25px;
-    #'     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    #'     color: #666;
-    #'   }
-    #' 
-    #'   @media (max-width: 768px) {
-    #'     .presentation-title {
-    #'       font-size: 2.5rem !important;
-    #'     }
-    #'     
-    #'     .presentation-subtitle {
-    #'       font-size: 2rem !important;
-    #'     }
-    #'     
-    #'     .context-list li {
-    #'       font-size: 1.5rem !important;
-    #'     }
-    #'   }
-    #' "))
-    #' ),
+
     
     # Container pour les slides
-    box( width = 12,
+    box(
+         width = 12,
          height = "75%",
+         style = "overflow: hidden; position: relative;",
     div(
       id = ns("slides_container"),
       
@@ -334,7 +333,7 @@ slideModuleUI <- function(id) {
           status = "warning",
           solidHeader = TRUE,
           collapsible = FALSE,
-          height = "600px",  # Augmenté la hauteur
+          height = "500px",  # Augmenté la hauteur
           div(
             class = "card-content",
             style = "height: 100%; overflow-y: auto;",  # Ajout du scroll
@@ -422,7 +421,7 @@ slideModuleUI <- function(id) {
           status = "warning",
           solidHeader = TRUE,
           collapsible = FALSE,
-          height = "600px", # Augmenté pour plus d'espace
+          height = "500px", # Augmenté pour plus d'espace
           div(
             class = "card-content",
             h2(class = "presentation-title", "Structure d'une Application Shiny"),

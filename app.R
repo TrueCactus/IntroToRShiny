@@ -15,7 +15,7 @@ source("R/slide_module.R")
 #read csv
 library(readr)
 pokeData <- read_csv("Pokemon.csv")
-pokeData <- pokeData %>% mutate(`Type 2` = replace_na(`Type 2`, "None"))
+pokeData <- pokeData %>% dplyr::mutate(`Type 2` = replace_na(`Type 2`, "None"))
 
 
 # Definition de l'UI ------------------------------------------------------
@@ -121,7 +121,6 @@ ui <- dashboardPage(
 
 server <- function(input, output, session) {
   slideModule("presentation")
-  #output$poketable <- renderDataTable(pokeData)
 
 ## Definition de la partie Server pour les "calculs" de l'exemple Pokemon ------------------------------------------------  
   
