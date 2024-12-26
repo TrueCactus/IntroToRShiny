@@ -5,6 +5,6 @@ account: truecactus
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13629226
-bundleId: 9552182
+bundleId: 9571494
 url: https://truecactus.shinyapps.io/HumanTalkIntroToShiny/
 version: 1

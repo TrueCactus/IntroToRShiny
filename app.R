@@ -85,30 +85,37 @@ ui <- dashboardPage(
       ),
       
 ##### Sous-onglet Visualisation -------------------------------------------------
-      tabItem(
-        tabName = "visualization",
-        fluidRow(
-          box(
-            title = "Graphique",
-            width = 12,
-            plotOutput("statsPlot")
-          )
-        )
-      ),
+##### Sous-onglet Visualisation -------------------------------------------------
+tabItem(
+  tabName = "visualization",
+  fluidRow(
+    column(width = 6,
+           selectInput("type1viz", "Select Type 1:", 
+                       choices = c("All", unique(pokeData$`Type 1`)),
+                       selected = "All")),
+    column(width = 6,
+           selectInput("type2viz", "Select Type 2:", 
+                       choices = c("All", unique(pokeData$`Type 2`)),
+                       selected = "All"))
+  ),
+  fluidRow(
+    column(width = 12,
+           plotOutput("statsPlot", height = "500px"))
+  )
+),
       
 ##### Sous-onglet Comparaison -------------------------------------------------
       tabItem(
         tabName = "comparison",
         fluidRow(
-          box(
-            title = "Sélection des Pokémon",
-            width = 4,
+            column(width = 6,
             selectInput("comparePokemon1", "Sélectionner le premier Pokémon:",
-                        choices = pokeData$Name, selected = pokeData$Name[1]),
+                        choices = pokeData$Name, selected = pokeData$Name[1])),
+            column(width = 6,
             selectInput("comparePokemon2", "Sélectionner le deuxième Pokémon:",
-                        choices = pokeData$Name, selected = pokeData$Name[2])
-          ),
-            plotOutput("radarPlot")
+                        choices = pokeData$Name, selected = pokeData$Name[2])),
+            column(width = 12,align = "center",
+            plotOutput("radarPlot"))
         )
       )
     )
@@ -148,11 +155,32 @@ server <- function(input, output, session) {
   
 ### Graphique : Distribution des Totals -------------------------------------------------
   output$statsPlot <- renderPlot({
-    hist(filteredData()$Total,
-         breaks = 20, col = "steelblue", border = "white",
-         main = "Distribution des Totals",
-         xlab = "Total",
-         ylab = "Fréquence")
+    data <- pokeData
+    
+    if (input$type1viz != "All") {
+      data <- data %>% filter(`Type 1` == input$type1viz)
+    }
+    if (input$type2viz != "All") {
+      data <- data %>% filter(`Type 2` == input$type2viz)
+    }
+    
+    # Vérifier si des données sont disponibles
+    if(nrow(data) == 0) {
+      return(plot.new() + 
+               text(0.5, 0.5, "Aucune donnée disponible pour cette sélection", cex = 1.2))
+    }
+    
+    ggplot(data, aes(x = Total)) +
+      geom_histogram(fill = "steelblue", color = "white", bins = 30) +
+      theme_minimal() +
+      labs(title = "Distribution des Totals",
+           x = "Total des statistiques",
+           y = "Fréquence") +
+      theme(
+        plot.title = element_text(size = 16, face = "bold"),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10)
+      )
   })
   
 ### Graphique Comparaison : RadarPlot -------------------------------------------------
