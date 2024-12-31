@@ -9,7 +9,7 @@ library(shinyjs)
 library(fmsb)
 library(scales)
 
-# Source le module des slides
+# Source le module des slides 
 source("R/slide_module.R")
 
 #read csv
