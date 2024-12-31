@@ -174,279 +174,383 @@ slideModuleUI <- function(id) {
     "))
     ),
 
+
+# Container pour les slides
+box(
+  width = 12,
+  height = "75%",
+  style = "overflow: hidden; position: relative;",
+  div(
+    id = ns("slides_container"),
     
-    # Container pour les slides
-    box(
-         width = 12,
-         height = "75%",
-         style = "overflow: hidden; position: relative;",
+    # Slide 1
     div(
-      id = ns("slides_container"),
-      
-      # Slide 1
-      div(
-        id = ns("slide1"),
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
+      id = ns("slide1"),
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content text-center",
+          h1(class = "presentation-title", "Introduction à R Shiny"),
+          h2(class = "presentation-subtitle", "d'un Tableur à une Application Web Dynamique"),
           div(
-            class = "card-content text-center",
-            h1(class = "presentation-title", "Introduction à R Shiny"),
-            h2(class = "presentation-subtitle", "d'un Tableur à une Application Web Dynamique"),
-            div(
-              style = "margin-top: 40px;",
-              img(src = "Shiny_hex_logo.png", 
-                  style = "max-height: 200px; width: auto; max-width: 100%;")
-            )
+            style = "margin-top: 40px;",
+            img(src = "Shiny_hex_logo.png", 
+                style = "max-height: 200px; width: auto; max-width: 100%;")
           )
         )
-      ),
-      
-      # Slide 2
-      div(
-        id = ns("slide2"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
+      )
+    ),
+    
+    # Slide 2
+    div(
+      id = ns("slide2"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Le Contexte"),
+          tags$ul(
+            class = "context-list",
+            tags$li(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive"),
+            tags$li(" Besoin d'une solution moderne pour explorer et visualiser les données"),
+            tags$li(" Objectif : Créer une application interactive et professionnelle")
+          ),
           div(
-            class = "card-content",
-            h2(class = "presentation-title", "Le Contexte"),
-            tags$ul(
-              class = "context-list",
-              tags$li(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive"),
-              tags$li(" Besoin d'une solution moderne pour explorer et visualiser les données"),
-              tags$li(" Objectif : Créer une application interactive et professionnelle")
-            ),
-            div(
-              class = "flex-image-container",
-              style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
-              img(src = "table.png", 
-                  style = "max-height: 200px; width: auto; max-width: 100%;"),
-              img(src = "right-arrow.png", 
-                  style = "max-height: 200px; width: auto; max-width: 100%;"),
-              img(src = "dashboard.png", 
-                  style = "max-height: 200px; width: auto; max-width: 100%;")
-            )
+            class = "flex-image-container",
+            style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
+            img(src = "table.png", 
+                style = "max-height: 200px; width: auto; max-width: 100%;"),
+            img(src = "right-arrow.png", 
+                style = "max-height: 200px; width: auto; max-width: 100%;"),
+            img(src = "dashboard.png", 
+                style = "max-height: 200px; width: auto; max-width: 100%;")
           )
         )
-      ),
-      
-      # Slide 3 (Nouveau)
-      div(
-        id = ns("slide3"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
+      )
+    ),
+    
+    # Slide 3
+    div(
+      id = ns("slide3"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Pourquoi R Shiny ?"),
+          tags$ul(
+            class = "context-list",
+            tags$li(" Interactivité immédiate pour vos analyses"),
+            tags$li(" Accessibilité via un navigateur web : partage facile avec les collaborateurs"),
+            tags$li(" Pas besoin de compétences avancées en développement web")
+          ),
           div(
-            class = "card-content",
-            h2(class = "presentation-title", "Pourquoi R Shiny ?"),
-            tags$ul(
-              class = "context-list",
-              tags$li(" Interactivité immédiate pour vos analyses"),
-              tags$li(" Accessibilité via un navigateur web : partage facile avec les collaborateurs"),
-              tags$li(" Pas besoin de compétences avancées en développement web")
-            ),
-            div(
-              style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
-              img(src = "interactive.png", 
-                  style = "max-height: 150px; width: auto; max-width: 100%;"),
-              img(src = "internet.png", 
-                  style = "max-height: 150px; width: auto; max-width: 100%;"),
-              img(src = "no-code.png", 
-                  style = "max-height: 150px; width: auto; max-width: 100%;")
-            )
+            style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
+            img(src = "interactive.png", 
+                style = "max-height: 150px; width: auto; max-width: 100%;"),
+            img(src = "internet.png", 
+                style = "max-height: 150px; width: auto; max-width: 100%;"),
+            img(src = "no-code.png", 
+                style = "max-height: 150px; width: auto; max-width: 100%;")
           )
         )
-      ),
-      
-      #slide4
-      div(
-        id = ns("slide4"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
-          div(
-            class = "card-content",
-            h2(class = "presentation-title", "Démonstration Interactive"),
-            fluidRow(
-              column(
-                class = "responsive-column",
-                width = 6,
-                div(
-                  style = "padding: 20px;",
-                  h4("Contrôles Interactifs", style = "color: #666;"),
-                  sliderInput(
-                    ns("demo_slider"),
-                    "Ajustez la valeur:",
-                    min = 0, max = 100, value = 50
-                  ),
-                  selectInput(
-                    ns("demo_color"),
-                    "Choisissez une couleur:",
-                    choices = c("Rouge" = "red", 
-                                "Bleu" = "blue", 
-                                "Vert" = "green")
-                  )
+      )
+    ),
+    
+    #slide4
+    div(
+      id = ns("slide4"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Démonstration Interactive"),
+          fluidRow(
+            column(
+              class = "responsive-column",
+              width = 6,
+              div(
+                style = "padding: 20px;",
+                h4("Contrôles Interactifs", style = "color: #666;"),
+                sliderInput(
+                  ns("demo_slider"),
+                  "Ajustez la valeur:",
+                  min = 0, max = 100, value = 50
+                ),
+                selectInput(
+                  ns("demo_color"),
+                  "Choisissez une couleur:",
+                  choices = c("Rouge" = "red", 
+                              "Bleu" = "blue", 
+                              "Vert" = "green")
                 )
-              ),
-              column(
-                class = "responsive-column",
-                width = 6,
-                div(
-                  style = "padding: 20px; text-align: center;",
-                  h4("Résultats en Temps Réel", style = "color: #666;"),
-                  plotOutput(ns("demo_plot"), height = "200px"),
-                  textOutput(ns("demo_text"))
-                )
+              )
+            ),
+            column(
+              class = "responsive-column",
+              width = 6,
+              div(
+                style = "padding: 20px; text-align: center;",
+                h4("Résultats en Temps Réel", style = "color: #666;"),
+                plotOutput(ns("demo_plot"), height = "200px"),
+                textOutput(ns("demo_text"))
               )
             )
           )
         )
-      ),
-      
-      
-      div(
-        id = ns("slide5"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",  # Augmenté la hauteur
-          div(
-            class = "card-content",
-            style = "height: 100%; overflow-y: auto;",  # Ajout du scroll
-            h2(class = "presentation-title", "Les Widgets Shiny"),
+      )
+    ),
+    
+    #Slide 5
+    div(
+      id = ns("slide5"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          style = "height: 100%; overflow-y: auto;",
+          h2(class = "presentation-title", "Les Widgets Shiny"),
+          
+          fluidRow(
+            # Première colonne : Widget avec le code
+            column( 
+              class = "responsive-column",
+              width = 3,
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Entrées Basiques", style = "color: #666; font-size: 1rem;"),
+                textInput(ns("demo_text"), "Text Input:", width = "100%"),
+                numericInput(ns("demo_num"), "Numeric Input:", value = 0, width = "100%"),
+                dateInput(ns("demo_date"), "Date Input:", width = "100%")
+              )
+            ),
             
-            fluidRow(
-              style = "margin: 0;",
-              # Première colonne
-              column(
-                class = "responsive-column",
-                width = 3,
-                #class = "column",  #
-                div(
-                  style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                  h4("Entrées Basiques", style = "color: #666; font-size: 1rem;"),
-                  textInput(ns("demo_text"), "Text Input:", width = "100%"),
-                  numericInput(ns("demo_num"), "Numeric Input:", value = 0, width = "100%"),
-                  dateInput(ns("demo_date"), "Date Input:", width = "100%")
-                )
-              ),
-              
-              # Deuxième colonne
-              column(
-                width = 3,
-                class = "responsive-column",
-                #class = "column", 
-                div(
-                  style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                  h4("Sélections", style = "color: #666; font-size: 1rem;"),
-                  selectInput(ns("demo_select"), "Select Input:",
-                              choices = c("Option 1", "Option 2", "Option 3"),
-                              width = "100%"),
-                  radioButtons(ns("demo_radio"), "Radio Buttons:",
-                               choices = c("Choix 1", "Choix 2"),  # Réduit le nombre de choix
-                               width = "100%"),
-                  checkboxGroupInput(ns("demo_checkbox"), "Checkbox Group:",
-                                     choices = c("A", "B"),  # Réduit le nombre de choix
-                                     width = "100%")
-                )
-              ),
-              
-              # Troisième colonne
-              column(
-                width = 3,
-                class = "responsive-column",
-                #class = "column",  #
-                div(
-                  style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                  h4("Contrôles Avancés", style = "color: #666; font-size: 1rem;"),
-                  sliderInput(ns("demo_slider"), "Slider:",
-                              min = 0, max = 100, value = 50,
-                              width = "100%"),
-                  dateRangeInput(ns("demo_daterange"), "Date Range:",
-                                 width = "100%"),
-                  actionButton(ns("demo_action"), "Action Button",
-                               class = "btn-primary btn-sm",
-                               width = "100%")
-                )
-              ),
-              
-              # Quatrième colonne
-              column(
-                width = 3,
-                class = "responsive-column",
-                #class = "column",  #
-                div(
-                  style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                  h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
-                  verbatimTextOutput(ns("widget_values"))
-                )
+            # Deuxième colonne : Code associé au widget
+            column(
+              class = "responsive-column",
+              width = 6,
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Code Exemple", style = "color: #666; font-size: 1rem;"),
+                HTML("<pre>textInput(ns('demo_text'), 'Text Input:', width = '100%')\n
+                 numericInput(ns('demo_num'), 'Numeric Input:', value = 0, width = '100%')\n
+                 dateInput(ns('demo_date'), 'Date Input:', width = '100%')</pre>")
+              )
+            ),
+            
+            # 3 eme colonne sortie
+            column(
+              width = 3,
+              class = "responsive-column",
+              #class = "column",  #
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
+                verbatimTextOutput(ns("widget_values_1"))
               )
             )
           )
         )
-      ),
-      
-      
-      #Slide 6
-      div(
-        id = ns("slide6"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px", # Augmenté pour plus d'espace
-          div(
-            class = "card-content",
-            h2(class = "presentation-title", "Structure d'une Application Shiny"),
-            div(
-              style = "display: flex; justify-content: space-around; align-items: center; padding: 20px;",
-              # UI Section
+      )
+    ),
+    
+    
+    #Slide 6
+    div(
+      id = ns("slide6"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          style = "height: 100%; overflow-y: auto;",
+          h2(class = "presentation-title", "Les Widgets Shiny"),
+          
+          fluidRow(
+            # Première colonne : Widgets interactifs
+            column(
+              width = 3,
+              class = "responsive-column",
               div(
-                style = "text-align: center;",
-                img(src = "cosmetics.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "UI Image"),
-                h4("UI : Interface utilisateur"),
-                p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
-              ),
-              # Server Section
-              div(
-                style = "text-align: center;",
-                img(src = "brain.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "Server Image"),
-                h4("Server : Logique métier"),
-                p("Les calculs réactifs et traitements définissent la logique de l'application.")
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Sélections", style = "color: #666; font-size: 1rem;"),
+                selectInput(ns("demo_select"), "Select Input:",
+                            choices = c("Option 1", "Option 2", "Option 3"),
+                            width = "100%"),
+                radioButtons(ns("demo_radio"), "Radio Buttons:",
+                             choices = c("Choix 1", "Choix 2"),
+                             width = "100%"),
+                checkboxGroupInput(ns("demo_checkbox"), "Checkbox Group:",
+                                   choices = c("A", "B"),
+                                   width = "100%")
               )
             ),
-            # Accolade for App
-            div(
-              style = "text-align: center; margin-top: 20px; position: relative;",
+            
+            # Deuxième colonne : Code associé au widget
+            column(
+              width = 6,
+              class = "responsive-column",
               div(
-                style = "
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Code Exemple", style = "color: #666; font-size: 1rem;"),
+                HTML("<pre>selectInput(ns('demo_select'), 'Select Input:', choices = c('Option 1', 'Option 2', 'Option 3'), width = '100%')\n
+                 radioButtons(ns('demo_radio'), 'Radio Buttons:', choices = c('Choix 1', 'Choix 2'), width = '100%')\n
+                 checkboxGroupInput(ns('demo_checkbox'), 'Checkbox Group:', choices = c('A', 'B'), width = '100%')</pre>")
+              )
+            ),
+            
+            # Troisième colonne : Sortie des valeurs sélectionnées
+            column(
+              width = 3,
+              class = "responsive-column",
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
+                verbatimTextOutput(ns("widget_values_2"))
+              )
+            )
+          )
+        )
+      )
+    ),
+    
+    
+    # Slide 7
+    div(
+      id = ns("slide7"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",  # Augmenté la hauteur
+        div(
+          class = "card-content",
+          style = "height: 100%; overflow-y: auto;",  # Ajout du scroll
+          h2(class = "presentation-title", "Les Widgets Shiny"),
+          
+          fluidRow(
+            style = "margin: 0;",
+            # Première colonne
+            column(
+              width = 3,
+              class = "responsive-column",
+              #class = "column",  #
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Contrôles Avancés", style = "color: #666; font-size: 1rem;"),
+                sliderInput(ns("demo_slider"), "Slider:",
+                            min = 0, max = 100, value = 50,
+                            width = "100%"),
+                dateRangeInput(ns("demo_daterange"), "Date Range:",
+                               width = "100%"),
+                actionButton(ns("demo_action"), "Action Button",
+                             class = "btn-primary btn-sm",
+                             width = "100%")
+              )
+            ),
+            
+            # Colonne pour afficher le code associé aux contrôles avancés
+            column(
+              width = 6,
+              class = "responsive-column",
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Code Exemple", style = "color: #666; font-size: 1rem;"),
+                HTML("<pre>sliderInput(ns('demo_slider'), 'Slider:', min = 0, max = 100, value = 50, width = '100%')\n
+         dateRangeInput(ns('demo_daterange'), 'Date Range:', width = '100%')\n
+         actionButton(ns('demo_action'), 'Action Button', class = 'btn-primary btn-sm', width = '100%')</pre>")
+              )
+            ),
+         
+         # 3eme colonne
+         column(
+           width = 3,
+           class = "responsive-column",
+           #class = "column",  #
+           div(
+             style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+             h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
+             verbatimTextOutput(ns("widget_values_3"))
+           )
+         )
+          )
+        )
+      )
+    ),
+    
+    
+    #Slide 8
+    div(
+      id = ns("slide8"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px", # Augmenté pour plus d'espace
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Structure d'une Application Shiny"),
+          div(
+            style = "display: flex; justify-content: space-around; align-items: center; padding: 20px;",
+            # UI Section
+            div(
+              style = "text-align: center;",
+              img(src = "cosmetics.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "UI Image"),
+              h4("UI : Interface utilisateur"),
+              p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
+            ),
+            # Server Section
+            div(
+              style = "text-align: center;",
+              img(src = "brain.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "Server Image"),
+              h4("Server : Logique métier"),
+              p("Les calculs réactifs et traitements définissent la logique de l'application.")
+            )
+          ),
+          # Accolade for App
+          div(
+            style = "text-align: center; margin-top: 20px; position: relative;",
+            div(
+              style = "
           display: inline-block; 
           border-left: 3px solid #000; 
           border-bottom: 3px solid #000; 
@@ -456,108 +560,109 @@ slideModuleUI <- function(id) {
           border-radius: 0 0 100px 100px; 
           margin-bottom: -10px;",
           NULL
-              ),
+            ),
           h4("App : Combine UI + Server"),
           p("Une application complète et dynamique résultant de la fusion des deux composants.")
-            )
           )
         )
-        
-      ),
+      )
       
-      
-      
-      div(
-        id = ns("slide7"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
+    ),
+    
+    
+    # Slide 9
+    div(
+      id = ns("slide9"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          h2(
+            class = "presentation-title",
+            style = "text-align: left; font-size: 1.5rem;",
+            "Exemple d'utilisation"
+          ),
           div(
-            class = "card-content",
-            h2(
-              class = "presentation-title",
-              style = "text-align: left; font-size: 1.5rem;",
-              "Exemple d'utilisation"
+            style = "display: flex; justify-content: space-around; align-items: center; margin-top: 40px;",
+            
+            # Partie "Avant"
+            div(
+              style = "text-align: center; font-size: 1.6rem;",
+              h2("Avant"),
+              tags$p("Un tableur Excel"),
+              tags$p("avec des données fixes"),
+              img(src = "table.png", alt = "table", style = "max-height: 150px; width: auto; max-width: 100%;")
             ),
+            
+            # Image Team Rocket
             div(
-              style = "display: flex; justify-content: space-around; align-items: center; margin-top: 40px;",
-              
-              # Partie "Avant"
+              class = "card-content",
               div(
-                style = "text-align: center; font-size: 1.6rem;",
-                h2("Avant"),
-                tags$p("Un tableur Excel"),
-                tags$p("avec des données fixes"),
-                img(src = "table.png", alt = "table", style = "max-height: 150px; width: auto; max-width: 100%;")
-              ),
-              
-              # Image Team Rocket
-              div(
-                class = "card-content",
-                div(
-                  style = "text-align: center;",
-                  img(src = "teamrocketpokemon.png", alt = "Team Rocket", style = "max-height: 250px; width: auto; max-width: 100%;")
-                )
-              ),
-              
-              # Partie "Après"
-              div(
-                style = "text-align: center; font-size: 1.6rem;",
-                h2("Après"),
-                tags$p("Une interface web interactive"),
-                tags$p("permettant de filtrer et visualiser les données en direct"),
-                img(src = "dashboard.png", alt = "dashboard", style = "max-height: 150px; width: auto; max-width: 100%;")
+                style = "text-align: center;",
+                img(src = "teamrocketpokemon.png", alt = "Team Rocket", style = "max-height: 250px; width: auto; max-width: 100%;")
               )
-            )
-          )
-        )
-      ),
-
-      
-      # Slide 8
-      div(
-        id = ns("slide8"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "warning",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
-          div(
-            class = "card-content",
-            h2(class = "presentation-title", "Conclusion"),
-            tags$ul(
-              class = "context-list",
-              tags$li(" R Shiny transforme vos analyses statiques en expériences interactives"),
-              tags$li(" Une solution accessible pour démocratiser la data au sein des équipes"),
-              tags$li(" Pourquoi ne pas essayer aujourd'hui ?")
-            )
-          )
-        )
-      ),
-      
-      div(
-        id = ns("slide9"),
-        style = "display: none;",
-        bs4Card(
-          width = 12,
-          title = NULL,
-          status = "success",
-          solidHeader = TRUE,
-          collapsible = FALSE,
-          height = "500px",
-          div(
-            class = "card-content",
-            style = "text-align: center; padding-top: 50px;",
-            h1(class = "presentation-title", "Merci !"),
+            ),
+            
+            # Partie "Après"
             div(
+              style = "text-align: center; font-size: 1.6rem;",
+              h2("Après"),
+              tags$p("Une interface web interactive"),
+              tags$p("permettant de filtrer et visualiser les données en direct"),
+              img(src = "dashboard.png", alt = "dashboard", style = "max-height: 150px; width: auto; max-width: 100%;")
+            )
+          )
+        )
+      )
+    ),
+    
+    
+    # Slide 10
+    div(
+      id = ns("slide10"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Conclusion"),
+          tags$ul(
+            class = "context-list",
+            tags$li(" R Shiny transforme vos analyses statiques en expériences interactives"),
+            tags$li(" Une solution accessible pour démocratiser la data au sein des équipes"),
+            tags$li(" Pourquoi ne pas essayer aujourd'hui ?")
+          )
+        )
+      )
+    ),
+    
+    #Slide 11
+    div(
+      id = ns("slide11"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "success",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "500px",
+        div(
+          class = "card-content",
+          style = "text-align: center; padding-top: 50px;",
+          h1(class = "presentation-title", "Merci !"),
+          div(
             img(
               src = "Rcestchouette.jpg", # Remplacez par le chemin de votre photo
               style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
@@ -566,59 +671,59 @@ slideModuleUI <- function(id) {
               src = "QRCODE.png", # Remplacez par le chemin de votre photo
               style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
             )
-            ),
+          ),
+          div(
+            style = "margin-top: 30px;",
+            h4("Connectez-vous avec moi :"),
             div(
-              style = "margin-top: 30px;",
-              h4("Connectez-vous avec moi :"),
-              div(
-                style = "margin-top: 20px; display: flex; justify-content: center; gap: 20px;",
-                tags$a(
-                  href = "https://www.linkedin.com/in/luciecamanez/",
-                  target = "_blank",
-                  icon("linkedin", "fa-2x", style = "color: #0077b5;")
-                ),
-                tags$a(
-                  href = "https://web-cdn.bsky.app/profile/ladatatata.bsky.social",
-                  target = "_blank",
-                  img(
-                    src = "bs_logo.png", # Ajoutez l'icône papillon dans le dossier www
-                    style = "width: 32px; height: 32px; margin-top: -4px;"
-                  )
-                ),
-                tags$a(
-                  href = "https://github.com/TrueCactus",
-                  target = "_blank",
-                  icon("github", "fa-2x", style = "color: black;")
+              style = "margin-top: 20px; display: flex; justify-content: center; gap: 20px;",
+              tags$a(
+                href = "https://www.linkedin.com/in/luciecamanez/",
+                target = "_blank",
+                icon("linkedin", "fa-2x", style = "color: #0077b5;")
+              ),
+              tags$a(
+                href = "https://web-cdn.bsky.app/profile/ladatatata.bsky.social",
+                target = "_blank",
+                img(
+                  src = "bs_logo.png", # Ajoutez l'icône papillon dans le dossier www
+                  style = "width: 32px; height: 32px; margin-top: -4px;"
                 )
+              ),
+              tags$a(
+                href = "https://github.com/TrueCactus",
+                target = "_blank",
+                icon("github", "fa-2x", style = "color: black;")
               )
             )
           )
         )
       )
-      
-      
-    )) ,
-    
-    # Navigation
-    div(
-      class = "navigation-container",
-      actionButton(
-        ns("prev_slide"), 
-        "",
-        class = "nav-button",
-        icon = icon("chevron-left")
-      ),
-      div(
-        class = "slide-counter",
-        textOutput(ns("slide_counter"))
-      ),
-      actionButton(
-        ns("next_slide"), 
-        "",
-        class = "nav-button",
-        icon = icon("chevron-right")
-      )
     )
+    
+    
+  )) ,
+
+# Navigation
+div(
+  class = "navigation-container",
+  actionButton(
+    ns("prev_slide"), 
+    "",
+    class = "nav-button",
+    icon = icon("chevron-left")
+  ),
+  div(
+    class = "slide-counter",
+    textOutput(ns("slide_counter"))
+  ),
+  actionButton(
+    ns("next_slide"), 
+    "",
+    class = "nav-button",
+    icon = icon("chevron-right")
+  )
+)
   )
 }
 
@@ -626,7 +731,7 @@ slideModuleUI <- function(id) {
 slideModule <- function(id) {
   moduleServer(id, function(input, output, session) {
     current_slide <- reactiveVal(1)
-    total_slides <- 9
+    total_slides <- 11
     
     # Ajouter les rendus pour le slide démonstratif
     output$demo_plot <- renderPlot({
@@ -644,15 +749,31 @@ slideModule <- function(id) {
             "\nCouleur choisie:", input$demo_color)
     })
     
-    # Output pour afficher les valeurs des widgets
-    output$widget_values <- renderText({
+    # Output pour afficher les valeurs des widgets 1
+    output$widget_values_1 <- renderText({
       paste(
         "Text Input:", input$demo_text, "\n",
         "Numeric Input:", input$demo_num, "\n",
+        "date Input:", input$demo_date, "\n"
+      )
+    })
+    
+    
+    # Output pour afficher les valeurs des widgets 2
+    output$widget_values_2 <- renderText({
+      paste(
         "Select Input:", input$demo_select, "\n",
         "Radio Selection:", input$demo_radio, "\n",
-        "Checkbox Group:", paste(input$demo_checkbox, collapse = ", "), "\n",
-        "Slider Value:", input$demo_slider
+        "Checkbox Group:", paste(input$demo_checkbox, collapse = ", ")
+      )
+    })
+    
+    
+    # Output pour afficher les valeurs des widgets 3
+    output$widget_values_3 <- renderText({
+      paste(
+        "Slider Value:", input$demo_slider, "\n",
+        "Date Range:", paste(input$demo_daterange, collapse = " to ")  # Format pour afficher la plage de dates
       )
     })
     
