@@ -24,7 +24,7 @@ ui <- dashboardPage(
   
   # En-tête du dashboard
   dashboardHeader(
-    title = "Human Talks Docker vs"
+    title = "Human Talks"
   ),
   
   

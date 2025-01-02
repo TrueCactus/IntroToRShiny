@@ -251,7 +251,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content text-center",
           h1(class = "presentation-title", "Introduction à R Shiny"),
@@ -275,7 +275,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Le Contexte"),
@@ -309,7 +309,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Pourquoi R Shiny ?"),
@@ -342,7 +342,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Démonstration Interactive"),
@@ -392,7 +392,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",
@@ -452,7 +452,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",
@@ -517,7 +517,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",  # Augmenté la hauteur
+        height = "600px",  # Augmenté la hauteur
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",  # Ajout du scroll
@@ -584,7 +584,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px", # Augmenté pour plus d'espace
+        height = "600px", # Augmenté pour plus d'espace
         div(
           class = "card-content",
           h2(class = "presentation-title", "Structure d'une Application Shiny"),
@@ -639,7 +639,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           h1(
@@ -692,7 +692,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           div(
@@ -723,7 +723,7 @@ box(
         status = "success",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "750px",
+        height = "600px",
         div(
           class = "card-content",
           style = "text-align: center; padding-top: 50px;",
@@ -731,11 +731,11 @@ box(
           div(
             img(
               src = "Rcestchouette.jpg", # Remplacez par le chemin de votre photo
-              style = "width: 450px; height: 450px; border-radius: 50%; margin-top: 20px;"
+              style = "width: 300px; height: 300px; border-radius: 50%; margin-top: 20px;"
             ),
             img(
               src = "QRCODE.png", # Remplacez par le chemin de votre photo
-              style = "width: 450px; height: 450px; border-radius: 50%; margin-top: 20px;"
+              style = "width: 300px; height: 300px; border-radius: 50%; margin-top: 20px;"
             )
           ),
           div(
