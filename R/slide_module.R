@@ -171,6 +171,65 @@ slideModuleUI <- function(id) {
     margin-bottom: 15px;
   }
 }
+
+/* Modifications des styles pour les bs4Card et leur contenu */
+.bs4Card {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bs4Card .card-body {
+  flex: 1;
+  padding: 0; /* Réduit le padding pour maximiser l'espace */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+/* Pour les slides qui ont besoin de centrer leur contenu verticalement */
+.card-content.text-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pour les slides avec des listes ou du contenu qui doit prendre toute la hauteur */
+.context-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Pour les conteneurs d'images */
+.flex-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Modification pour la taille du texte des listes */
+.card-content ul li {
+  font-size: rem !important;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Si besoin de spécifier pour certaines listes en particulier */
+.context-list li {
+  font-size: 2rem !important;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
     "))
     ),
 
@@ -192,7 +251,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content text-center",
           h1(class = "presentation-title", "Introduction à R Shiny"),
@@ -216,15 +275,15 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Le Contexte"),
           tags$ul(
             class = "context-list",
-            tags$li(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive"),
-            tags$li(" Besoin d'une solution moderne pour explorer et visualiser les données"),
-            tags$li(" Objectif : Créer une application interactive et professionnelle")
+            tags$li(h2(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive")),
+            tags$li(h2(" Besoin d'une solution moderne pour explorer et visualiser les données")),
+            tags$li(h2(" Objectif : Créer une application interactive et professionnelle"))
           ),
           div(
             class = "flex-image-container",
@@ -250,15 +309,15 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Pourquoi R Shiny ?"),
           tags$ul(
             class = "context-list",
-            tags$li(" Interactivité immédiate pour vos analyses"),
-            tags$li(" Accessibilité via un navigateur web : partage facile avec les collaborateurs"),
-            tags$li(" Pas besoin de compétences avancées en développement web")
+            tags$li(h2(" Interactivité immédiate pour vos analyses")),
+            tags$li(h2(" Accessibilité via un navigateur web : partage facile avec les collaborateurs")),
+            tags$li(h2(" Pas besoin de compétences avancées en développement web"))
           ),
           div(
             style = "margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px;",
@@ -283,7 +342,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           h2(class = "presentation-title", "Démonstration Interactive"),
@@ -293,7 +352,7 @@ box(
               width = 6,
               div(
                 style = "padding: 20px;",
-                h4("Contrôles Interactifs", style = "color: #666;"),
+                h2("Contrôles Interactifs", style = "color: #666;"),
                 sliderInput(
                   ns("demo_slider"),
                   "Ajustez la valeur:",
@@ -313,7 +372,7 @@ box(
               width = 6,
               div(
                 style = "padding: 20px; text-align: center;",
-                h4("Résultats en Temps Réel", style = "color: #666;"),
+                h2("Résultats en Temps Réel", style = "color: #666;"),
                 plotOutput(ns("demo_plot"), height = "200px"),
                 textOutput(ns("demo_text"))
               )
@@ -333,7 +392,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",
@@ -346,7 +405,7 @@ box(
               width = 3,
               div(
                 style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                h4("Entrées Basiques", style = "color: #666; font-size: 1rem;"),
+                h2("Entrées Basiques", style = "color: #666; font-size: 1rem;"),
                 textInput(ns("demo_text"), "Text Input:", width = "100%"),
                 numericInput(ns("demo_num"), "Numeric Input:", value = 0, width = "100%"),
                 dateInput(ns("demo_date"), "Date Input:", width = "100%")
@@ -359,7 +418,7 @@ box(
               width = 6,
               div(
                 style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                h4("Code Exemple", style = "color: #666; font-size: 1rem;"),
+                h2("Code Exemple", style = "color: #666; font-size: 1rem;"),
                 HTML("<pre>textInput(ns('demo_text'), 'Text Input:', width = '100%')\n
                  numericInput(ns('demo_num'), 'Numeric Input:', value = 0, width = '100%')\n
                  dateInput(ns('demo_date'), 'Date Input:', width = '100%')</pre>")
@@ -373,7 +432,7 @@ box(
               #class = "column",  #
               div(
                 style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
-                h4("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
+                h2("Valeurs Sélectionnées", style = "color: #666; font-size: 1rem;"),
                 verbatimTextOutput(ns("widget_values_1"))
               )
             )
@@ -393,7 +452,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",
@@ -458,7 +517,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",  # Augmenté la hauteur
+        height = "750px",  # Augmenté la hauteur
         div(
           class = "card-content",
           style = "height: 100%; overflow-y: auto;",  # Ajout du scroll
@@ -525,7 +584,7 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px", # Augmenté pour plus d'espace
+        height = "750px", # Augmenté pour plus d'espace
         div(
           class = "card-content",
           h2(class = "presentation-title", "Structure d'une Application Shiny"),
@@ -580,10 +639,10 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
-          h2(
+          h1(
             class = "presentation-title",
             style = "text-align: left; font-size: 1.5rem;",
             "Exemple d'utilisation"
@@ -594,9 +653,9 @@ box(
             # Partie "Avant"
             div(
               style = "text-align: center; font-size: 1.6rem;",
-              h2("Avant"),
-              tags$p("Un tableur Excel"),
-              tags$p("avec des données fixes"),
+              h1("Avant"),
+              tags$h2("Un tableur Excel"),
+              tags$h3("avec des données fixes"),
               img(src = "table.png", alt = "table", style = "max-height: 150px; width: auto; max-width: 100%;")
             ),
             
@@ -612,9 +671,9 @@ box(
             # Partie "Après"
             div(
               style = "text-align: center; font-size: 1.6rem;",
-              h2("Après"),
-              tags$p("Une interface web interactive"),
-              tags$p("permettant de filtrer et visualiser les données en direct"),
+              h1("Après"),
+              tags$h2("Une interface web interactive"),
+              tags$h3("permettant de filtrer et visualiser les données en direct"),
               img(src = "dashboard.png", alt = "dashboard", style = "max-height: 150px; width: auto; max-width: 100%;")
             )
           )
@@ -633,15 +692,22 @@ box(
         status = "warning",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
-          h2(class = "presentation-title", "Conclusion"),
-          tags$ul(
-            class = "context-list",
-            tags$li(" R Shiny transforme vos analyses statiques en expériences interactives"),
-            tags$li(" Une solution accessible pour démocratiser la data au sein des équipes"),
-            tags$li(" Pourquoi ne pas essayer aujourd'hui ?")
+          div(
+            class = "flex-content",
+            h1(class = "presentation-title", "Conclusion"),
+            tags$ul(
+              class = "context-list",
+              tags$li(h2("R Shiny transforme vos analyses statiques en expériences interactives")),
+              tags$li(h2("Une solution accessible pour démocratiser la data au sein des équipes"))
+            )
+          ),
+          div(
+            class = "flex-image-container",
+            img(src = "Shiny_hex_logo.png", 
+                style = "height: 200px; width: auto;")
           )
         )
       )
@@ -657,7 +723,7 @@ box(
         status = "success",
         solidHeader = TRUE,
         collapsible = FALSE,
-        height = "500px",
+        height = "750px",
         div(
           class = "card-content",
           style = "text-align: center; padding-top: 50px;",
@@ -665,16 +731,16 @@ box(
           div(
             img(
               src = "Rcestchouette.jpg", # Remplacez par le chemin de votre photo
-              style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
+              style = "width: 450px; height: 450px; border-radius: 50%; margin-top: 20px;"
             ),
             img(
               src = "QRCODE.png", # Remplacez par le chemin de votre photo
-              style = "width: 200px; height: 200px; border-radius: 50%; margin-top: 20px;"
+              style = "width: 450px; height: 450px; border-radius: 50%; margin-top: 20px;"
             )
           ),
           div(
             style = "margin-top: 30px;",
-            h4("Connectez-vous avec moi :"),
+            h1("Connectez-vous avec moi :"),
             div(
               style = "margin-top: 20px; display: flex; justify-content: center; gap: 20px;",
               tags$a(
