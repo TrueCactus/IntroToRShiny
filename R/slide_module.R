@@ -278,12 +278,12 @@ box(
         height = "600px",
         div(
           class = "card-content",
-          h2(class = "presentation-title", "Le Contexte"),
+          h2(class = "presentation-title", "C'est quoi R Shiny ?!"),
           tags$ul(
             class = "context-list",
-            tags$li(h2(" Les tableurs sont statiques et limitent les possibilités d'analyse interactive")),
-            tags$li(h2(" Besoin d'une solution moderne pour explorer et visualiser les données")),
-            tags$li(h2(" Objectif : Créer une application interactive et professionnelle"))
+            tags$li(h2("Framework permettant de créér des application Web")),
+            tags$li(h2("Langage de Programmation R")),
+            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats interactivement"))
           ),
           div(
             class = "flex-image-container",
@@ -332,9 +332,142 @@ box(
       )
     ),
     
-    #slide4
+    
+    #Slide 8
     div(
       id = ns("slide4"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "warning",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "600px", # Augmenté pour plus d'espace
+        div(
+          class = "card-content",
+          h2(class = "presentation-title", "Structure d'une Application Shiny"),
+          div(
+            style = "display: flex; justify-content: space-around; align-items: center; padding: 20px;",
+            # UI Section
+            div(
+              style = "text-align: center;",
+              img(src = "cosmetics.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "UI Image"),
+              h4("UI : Interface utilisateur"),
+              p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
+            ),
+            # Server Section
+            div(
+              style = "text-align: center;",
+              img(src = "brain.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "Server Image"),
+              h4("Server : Logique métier"),
+              p("Les calculs réactifs et traitements définissent la logique de l'application.")
+            )
+          ),
+          # Accolade for App
+          div(
+            style = "text-align: center; margin-top: 20px; position: relative;",
+            div(
+              style = "
+          display: inline-block; 
+          border-left: 3px solid #000; 
+          border-bottom: 3px solid #000; 
+          border-right: 3px solid #000; 
+          height: 50px; 
+          width: 200px; 
+          border-radius: 0 0 100px 100px; 
+          margin-bottom: -10px;",
+          NULL
+            ),
+          h4("App : Combine UI + Server"),
+          p("Une application complète et dynamique résultant de la fusion des deux composants.")
+          )
+        )
+      )
+      
+    ),
+    
+    
+    
+    # slide 5
+    div(
+      id = ns("slide5"),
+      style = "display: none;",
+      bs4Card(
+        width = 12,
+        title = NULL,
+        status = "primary",
+        solidHeader = TRUE,
+        collapsible = FALSE,
+        height = "600px",  # Ajuste la hauteur
+        div(
+          class = "card-content",
+          style = "height: 100%; overflow-y: auto;",  # Ajout du scroll si nécessaire
+          h2(class = "presentation-title", "Histogramme Interactif"),
+          
+          fluidRow(
+            style = "margin: 0;",
+            
+            # Colonne 1 : Histogramme
+            column(
+              width = 6,
+              class = "responsive-column",
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h5("Histogramme", style = "color: #666; font-size: 1rem;"),
+                sliderInput(ns("bins"), "Nombre de barres :", 
+                            min = 1, max = 50, value = 30, 
+                            width = "100%"),
+                plotOutput(ns("histPlot"))
+              )
+            ),
+            
+            # Colonne 2 : Code associé
+            column(
+              width = 6,
+              class = "responsive-column",
+              div(
+                style = "background: #f8f9fa; padding: 10px; border-radius: 10px; margin-bottom: 10px;",
+                h4("Code Exemple", style = "color: #666; font-size: 1rem;"),
+                HTML("
+              <pre>
+library(shiny)
+
+# Interface utilisateur
+ui <- fluidPage(
+  h1('Histogramme Interactif'),
+  sliderInput('bins', 'Nombre de barres :', 
+              min = 1, max = 50, value = 30, 
+              width = '25%'),
+  plotOutput('histPlot', width = '80%')
+)
+
+# Logique serveur
+server <- function(input, output) {
+  output$histPlot <- renderPlot({
+    x <- faithful$eruptions
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    hist(x, breaks = bins, col = 'steelblue', border = 'white',
+         main = 'Histogramme des éruptions',
+         xlab = 'Durée des éruptions (minutes)')
+  })
+}
+
+# Lancement de l'application
+shinyApp(ui = ui, server = server)
+              </pre>
+            ")
+              )
+            )
+          )
+        )
+      )
+    ),
+    
+    
+    #slide6
+    div(
+      id = ns("slide6"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -382,9 +515,9 @@ box(
       )
     ),
     
-    #Slide 5
+    #Slide 7
     div(
-      id = ns("slide5"),
+      id = ns("slide7"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -442,9 +575,9 @@ box(
     ),
     
     
-    #Slide 6
+    #Slide 8
     div(
-      id = ns("slide6"),
+      id = ns("slide8"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -507,9 +640,9 @@ box(
     ),
     
     
-    # Slide 7
+    # Slide 9
     div(
-      id = ns("slide7"),
+      id = ns("slide9"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -574,64 +707,11 @@ box(
     ),
     
     
-    #Slide 8
-    div(
-      id = ns("slide8"),
-      style = "display: none;",
-      bs4Card(
-        width = 12,
-        title = NULL,
-        status = "warning",
-        solidHeader = TRUE,
-        collapsible = FALSE,
-        height = "600px", # Augmenté pour plus d'espace
-        div(
-          class = "card-content",
-          h2(class = "presentation-title", "Structure d'une Application Shiny"),
-          div(
-            style = "display: flex; justify-content: space-around; align-items: center; padding: 20px;",
-            # UI Section
-            div(
-              style = "text-align: center;",
-              img(src = "cosmetics.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "UI Image"),
-              h4("UI : Interface utilisateur"),
-              p("Les inputs et outputs permettent à l'utilisateur d'interagir avec les données.")
-            ),
-            # Server Section
-            div(
-              style = "text-align: center;",
-              img(src = "brain.png", style = "max-height: 150px; width: auto; max-width: 100%;", alt = "Server Image"),
-              h4("Server : Logique métier"),
-              p("Les calculs réactifs et traitements définissent la logique de l'application.")
-            )
-          ),
-          # Accolade for App
-          div(
-            style = "text-align: center; margin-top: 20px; position: relative;",
-            div(
-              style = "
-          display: inline-block; 
-          border-left: 3px solid #000; 
-          border-bottom: 3px solid #000; 
-          border-right: 3px solid #000; 
-          height: 50px; 
-          width: 200px; 
-          border-radius: 0 0 100px 100px; 
-          margin-bottom: -10px;",
-          NULL
-            ),
-          h4("App : Combine UI + Server"),
-          p("Une application complète et dynamique résultant de la fusion des deux composants.")
-          )
-        )
-      )
-      
-    ),
     
     
-    # Slide 9
+    # Slide 10
     div(
-      id = ns("slide9"),
+      id = ns("slide10"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -682,9 +762,9 @@ box(
     ),
     
     
-    # Slide 10
+    # Slide 11
     div(
-      id = ns("slide10"),
+      id = ns("slide11"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -700,8 +780,11 @@ box(
             h1(class = "presentation-title", "Conclusion"),
             tags$ul(
               class = "context-list",
-              tags$li(h2("R Shiny transforme vos analyses statiques en expériences interactives")),
-              tags$li(h2("Une solution accessible pour démocratiser la data au sein des équipes"))
+              tags$li(h2("R Shiny transforme les analyses statiques en expériences interactives")),
+              tags$li(h2("Une solution accessible par tous ")),
+              tags$li(h2("Création d'objets interactifs facilitée")),
+              tags$li(h2("Choix de sorties variées (graphique, texte,etc)"))
+              
             )
           ),
           div(
@@ -713,9 +796,9 @@ box(
       )
     ),
     
-    #Slide 11
+    #Slide 12
     div(
-      id = ns("slide11"),
+      id = ns("slide12"),
       style = "display: none;",
       bs4Card(
         width = 12,
@@ -797,7 +880,16 @@ div(
 slideModule <- function(id) {
   moduleServer(id, function(input, output, session) {
     current_slide <- reactiveVal(1)
-    total_slides <- 11
+    total_slides <- 12
+    
+    
+    output$histPlot <- renderPlot({
+      x <- faithful$eruptions
+      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      hist(x, breaks = bins, col = "steelblue", border = "white",
+           main = "Histogramme des éruptions",
+           xlab = "Durée des éruptions (minutes)")
+    })
     
     # Ajouter les rendus pour le slide démonstratif
     output$demo_plot <- renderPlot({
