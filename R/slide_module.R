@@ -10,6 +10,7 @@ slideModuleUI <- function(id) {
     useShinyjs(),
     
     tags$head(
+      tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"),
       tags$style(HTML("
                       /* Styles de base pour la box et les conteneurs */
 .box {
