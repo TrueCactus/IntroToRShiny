@@ -230,6 +230,125 @@ slideModuleUI <- function(id) {
   line-height: 1.5;
   margin-bottom: 1rem;
 }
+
+/* Styles de base pour mobile */
+@media (max-width: 768px) {
+  /* Ajustement des tailles de police */
+  .presentation-title {
+    font-size: 2rem !important;
+  }
+  
+  .presentation-subtitle {
+    font-size: 1.5rem !important;
+  }
+  
+  .context-list li {
+    font-size: 1.2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Ajustement des cartes */
+  .slide-card {
+    height: calc(100vh - 120px) !important;
+    min-height: 300px;
+  }
+
+  .bs4Card {
+    margin: 5px;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  /* Optimisation des colonnes */
+  .responsive-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Ajustement des images */
+  img {
+    max-height: 100px !important;
+    max-width: 100% !important;
+  }
+
+  .flex-image-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Navigation */
+  .navigation-container {
+    padding: 10px;
+    gap: 15px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Ajustement des contrôles */
+  .shiny-input-container {
+    width: 100% !important;
+  }
+
+  /* Optimisation des graphiques */
+  .plot-container {
+    height: 200px !important;
+  }
+
+  /* Meilleure gestion du défilement */
+  .card-body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Amélioration de l'espacement */
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  .col {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Ajout de support pour les gestes tactiles */
+@media (hover: none) and (pointer: coarse) {
+  .card-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Optimisation pour les très petits écrans */
+@media (max-width: 320px) {
+  .presentation-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .navigation-container {
+    padding: 5px;
+    gap: 10px;
+  }
+}
+
+
+
+
     "))
     ),
 
