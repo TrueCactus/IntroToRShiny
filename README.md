@@ -16,6 +16,12 @@ L'application est structurée autour de plusieurs onglets, dont le premier est d
 Un module de présentation (slides) est intégré pour présenter l'introduction à Shiny avant d'entrer dans les fonctionnalités de l'application.
 Cette partie utilise la notion de modularisation au sein d'une application Shiny ( Ce point n'a pas été approfondi pour la présentation)
 
+
+### Onglet Téléchargements et liens :
+Cette partie contient les liens vers les différentes documentation R Shiny.
+Les Slides et les données utilisées pour la présentation sont téléchargeables via l'onglet "Slides et données présentation". De même le lien vers le repo github de cette présentation est donné.
+
+
 ## Structure de l'application
 
 ### UI (Interface Utilisateur)
