@@ -609,7 +609,7 @@ shinyApp(ui = ui, server = server)
                 sliderInput(
                   ns("demo_slider"),
                   "Ajustez la valeur:",
-                  min = 0, max = 100, value = 50
+                  min = 0, max = 10, value = 5
                 ),
                 selectInput(
                   ns("demo_color"),
@@ -1012,14 +1012,49 @@ slideModule <- function(id) {
     })
     
     # Ajouter les rendus pour le slide démonstratif
+    # output$demo_plot <- renderPlot({
+    #   plot(1:100, 
+    #        rep(input$demo_slider, 100), 
+    #        col = input$demo_color,
+    #        type = "l",
+    #        main = "Visualisation Interactive",
+    #        xlab = "X",
+    #        ylab = "Y")
+    # })
+    
+    
     output$demo_plot <- renderPlot({
-      plot(1:100, 
-           rep(input$demo_slider, 100), 
-           col = input$demo_color,
-           type = "l",
-           main = "Visualisation Interactive",
-           xlab = "X",
-           ylab = "Y")
+      # Obtenir le nombre de cœurs à afficher depuis le slider
+      n_hearts <- input$demo_slider
+      heart_color <- input$demo_color
+      
+      # Créer un dataframe pour les positions des cœurs
+      hearts_per_row <- min(5, n_hearts)
+      rows_needed <- ceiling(n_hearts/5)
+      
+      # Créer les positions des cœurs
+      positions <- data.frame(
+        x = rep(seq(1, 5), length.out = n_hearts),
+        y = rep(seq(rows_needed, 1, by = -1), each = 5)[1:n_hearts]
+      )
+      
+      # Créer le plot avec ggplot2
+      ggplot(positions, aes(x = x, y = y)) +
+        geom_point(color = heart_color, size = 20, shape = "\u2665") +  # Unicode heart symbol
+        scale_x_continuous(limits = c(0, 6)) +
+        scale_y_continuous(limits = c(0, max(rows_needed + 0.5, 2))) +
+        theme_void() +  # Enlever les axes et la grille
+        theme(
+          plot.background = element_rect(fill = "white", color = NA),
+          panel.background = element_rect(fill = "white", color = NA)
+        )
+    })
+    
+    output$demo_text <- renderText({
+      paste("Nombre de cœurs:", input$demo_slider, 
+            "\nCouleur:", names(which(c("red" = "Rouge", 
+                                        "blue" = "Bleu", 
+                                        "green" = "Vert") == input$demo_color)))
     })
     
     output$demo_text <- renderText({
