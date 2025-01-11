@@ -403,7 +403,7 @@ box(
             class = "context-list",
             tags$li(h2("Framework permettant de créer des application Web")),
             tags$li(h2("Langage de Programmation R")),
-            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats de façon intéractive"))
+            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats de façon interactive"))
           ),
           div(
             class = "flex-image-container",
@@ -607,7 +607,7 @@ shinyApp(ui = ui, server = server)
                 style = "padding: 20px;",
                 h2("Contrôles Interactifs", style = "color: #666;"),
                 sliderInput(
-                  ns("demo_slider"),
+                  ns("demo_slider_pikachu"),
                   "Ajustez la valeur:",
                   min = 0, max = 10, value = 5
                 ),
@@ -1011,40 +1011,28 @@ slideModule <- function(id) {
            xlab = "Durée des éruptions (minutes)")
     })
     
-    # Ajouter les rendus pour le slide démonstratif
-    # output$demo_plot <- renderPlot({
-    #   plot(1:100, 
-    #        rep(input$demo_slider, 100), 
-    #        col = input$demo_color,
-    #        type = "l",
-    #        main = "Visualisation Interactive",
-    #        xlab = "X",
-    #        ylab = "Y")
-    # })
-    
     
     output$demo_plot <- renderPlot({
+      
       # Obtenir le nombre de Pikachu à afficher depuis le slider
-      n_pikachus <- input$demo_slider
-      pikachu_color <- input$demo_color
+      n_pikachus <- input$demo_slider_pikachu
+      bg_color <- input$demo_color
       
-      # Créer un dataframe pour les positions
-      pikachus_per_row <- min(5, n_pikachus)
-      rows_needed <- ceiling(n_pikachus/5)
-      
-      # Créer les positions
+      # Créer les positions uniquement pour le nombre de Pikachu demandé
       positions <- data.frame(
-        x = rep(seq(1, 5), length.out = n_pikachus),
-        y = rep(seq(rows_needed, 1, by = -1), each = 5)[1:n_pikachus]
+        x = rep(1:5, length.out = n_pikachus),  # Maximum 5 par ligne
+        y = ceiling(seq_len(n_pikachus)/5)      # Nouvelle ligne tous les 5 Pikachu
       )
       
       # Charger l'image
       img <- png::readPNG("www/pikachu.png")
       g <- grid::rasterGrob(img, interpolate = TRUE)
       
-      # Créer le plot avec ggplot2
+      # Calculer les limites du plot en fonction du nombre de Pikachu
+      max_y <- max(positions$y, 1)
+      
+      # Créer le plot
       ggplot(positions, aes(x = x, y = y)) +
-        # Utiliser annotation_custom pour chaque position
         lapply(1:nrow(positions), function(i) {
           annotation_custom(
             g,
@@ -1055,24 +1043,12 @@ slideModule <- function(id) {
           )
         }) +
         scale_x_continuous(limits = c(0, 6)) +
-        scale_y_continuous(limits = c(0, max(rows_needed + 0.5, 2))) +
+        scale_y_continuous(limits = c(0, max_y + 1)) +
         theme_void() +
         theme(
-          plot.background = element_rect(fill = "white", color = NA),
-          panel.background = element_rect(fill = "white", color = NA)
+          plot.background = element_rect(fill = bg_color, color = NA),
+          panel.background = element_rect(fill = bg_color, color = NA)
         )
-    })
-    
-    output$demo_text <- renderText({
-      paste("Nombre de cœurs:", input$demo_slider, 
-            "\nCouleur:", names(which(c("red" = "Rouge", 
-                                        "blue" = "Bleu", 
-                                        "green" = "Vert") == input$demo_color)))
-    })
-    
-    output$demo_text <- renderText({
-      paste("Valeur sélectionnée:", input$demo_slider,
-            "\nCouleur choisie:", input$demo_color)
     })
     
     # Output pour afficher les valeurs des widgets 1
