@@ -401,9 +401,9 @@ box(
           h2(class = "presentation-title", "C'est quoi R Shiny ?!"),
           tags$ul(
             class = "context-list",
-            tags$li(h2("Framework permettant de créér des application Web")),
+            tags$li(h2("Framework permettant de créer des application Web")),
             tags$li(h2("Langage de Programmation R")),
-            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats interactivement"))
+            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats de façon intéractive"))
           ),
           div(
             class = "flex-image-container",
@@ -1024,26 +1024,39 @@ slideModule <- function(id) {
     
     
     output$demo_plot <- renderPlot({
-      # Obtenir le nombre de cœurs à afficher depuis le slider
-      n_hearts <- input$demo_slider
-      heart_color <- input$demo_color
+      # Obtenir le nombre de Pikachu à afficher depuis le slider
+      n_pikachus <- input$demo_slider
+      pikachu_color <- input$demo_color
       
-      # Créer un dataframe pour les positions des cœurs
-      hearts_per_row <- min(5, n_hearts)
-      rows_needed <- ceiling(n_hearts/5)
+      # Créer un dataframe pour les positions
+      pikachus_per_row <- min(5, n_pikachus)
+      rows_needed <- ceiling(n_pikachus/5)
       
-      # Créer les positions des cœurs
+      # Créer les positions
       positions <- data.frame(
-        x = rep(seq(1, 5), length.out = n_hearts),
-        y = rep(seq(rows_needed, 1, by = -1), each = 5)[1:n_hearts]
+        x = rep(seq(1, 5), length.out = n_pikachus),
+        y = rep(seq(rows_needed, 1, by = -1), each = 5)[1:n_pikachus]
       )
+      
+      # Charger l'image
+      img <- png::readPNG("www/pikachu.png")
+      g <- grid::rasterGrob(img, interpolate = TRUE)
       
       # Créer le plot avec ggplot2
       ggplot(positions, aes(x = x, y = y)) +
-        geom_point(color = heart_color, size = 20, shape = "\u2665") +  # Unicode heart symbol
+        # Utiliser annotation_custom pour chaque position
+        lapply(1:nrow(positions), function(i) {
+          annotation_custom(
+            g,
+            xmin = positions$x[i] - 0.4,
+            xmax = positions$x[i] + 0.4,
+            ymin = positions$y[i] - 0.4,
+            ymax = positions$y[i] + 0.4
+          )
+        }) +
         scale_x_continuous(limits = c(0, 6)) +
         scale_y_continuous(limits = c(0, max(rows_needed + 0.5, 2))) +
-        theme_void() +  # Enlever les axes et la grille
+        theme_void() +
         theme(
           plot.background = element_rect(fill = "white", color = NA),
           panel.background = element_rect(fill = "white", color = NA)
