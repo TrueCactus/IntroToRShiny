@@ -403,7 +403,7 @@ box(
             class = "context-list",
             tags$li(h2("Framework permettant de créer des application Web")),
             tags$li(h2("Langage de Programmation R")),
-            tags$li(h2("Permet d'excuter du code R et d'afficher des résultats de façon interactive"))
+            tags$li(h2("Permet d'exécuter du code R et d'afficher des résultats de façon interactive"))
           ),
           div(
             class = "flex-image-container",
